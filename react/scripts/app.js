@@ -1,12 +1,58 @@
 var Kenteken = React.createClass({
+  getInitialState: function() {
+    return {
+      step: 1,
+      data: {
+        kenteken: ''
+      }
+    }
+  },
+
+  render: function() {
+    switch (this.state.step) {
+      case 1:
+        return <KentekenFields 
+                    onCompleted={ this.nextStep } />;
+      case 2:
+        return <span>Result state</span>;
+    }
+  },
+
+  nextStep: function(data) {
+    console.log(data);
+    console.log(this.state.step);
+    this.setState({step: this.state.step += 1});
+    console.log(this.state.step);
+  }
+
+});
+
+var KentekenFields = React.createClass({
   render: function() {
     return (
-      <div className="cb-kenteken">
-        Hello, world! I am a kenteken.
+      <div>
+        <input type="text" ref="kenteken" />
+        <button onClick={ this.validateKenteken }>Verder</button>
       </div>
-    );
+    );    
+  },
+
+  validateKenteken: function(e) {
+    e.preventDefault();
+    var kenteken = this.refs.kenteken.value;
+    this.props.onCompleted(kenteken);
   }
 });
+
+
+
+
+
+
+
+
+
+
 
 var StripHero = React.createClass({
   render: function() {
