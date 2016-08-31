@@ -71,6 +71,9 @@ var KentekenFields = React.createClass({
 
 
 
+//
+// react-striphero
+//
 
 var HeroBanner = React.createClass({
   render: function() {
@@ -83,12 +86,29 @@ var HeroBanner = React.createClass({
   backgroundImageUrl: 'https://cba.imgix.net/verzekeringen/overlijdensrisicoverzekering/PublishingImages/ORV_verzekering.jpg?'
 });
 
+var Breadcrumb = React.createClass({
+  render: function() {
+    return (
+      <div className="container-breadcrumb">
+        <div className="gradient"></div>
+        <ol className="breadcrumb">
+          <li><a href="">Dynamic</a></li>
+          <li><a href="">Load</a></li>
+          <li><span>Breadcrumb</span></li>
+        </ol>
+      </div>
+    );
+  }
+});
 
 var StripHero = React.createClass({
   render: function() {
     return (
       <article className="cb-strip cb-strip-hero-product">
         <HeroBanner />
+        <div className="page container">
+          <Breadcrumb/>
+        </div>
         Hello, world! I am a herostrip.
       </article>
     );
@@ -97,34 +117,30 @@ var StripHero = React.createClass({
 
 
 
+//
+// react-stripherocontent
+//
 
 var StripHeroContent = React.createClass({
   render: function() {
     return (
-        <article className="cb-strip cb-strip-hero-product">
-          <div className="page container">
-            <div className="container-breadcrumb">
-              <div className="gradient"></div>
-              <ol className="breadcrumb">
-                <li><a href="">Dynamic</a></li>
-                <li><a href="">Load</a></li>
-                <li><span>Breadcrumb</span></li>
-              </ol>
-            </div>
-            <section className="content">
-              <h1>Product titel</h1>
-              <h2 className="highlight margin-bottom-lg">Tagline tekst</h2>
-            </section>
-          </div>
-        </article>
+      <article className="cb-strip cb-strip-hero-product">
+        <div className="page container" style={{marginTop: '-22px'}}>
+          <section className="content">
+            <h1>Product titel</h1>
+            <h2 className="highlight margin-bottom-lg">Tagline tekst</h2>
+          </section>
+        </div>
+      </article>
     );
   }
 });
 
 
 
-
-
+//
+// react-stripcontent
+//
 
 var StripContent = React.createClass({
   render: function() {
@@ -138,8 +154,9 @@ var StripContent = React.createClass({
 
 
 
-
-
+//
+// react-stripvideo
+//
 
 var StripVideo = React.createClass({
   render: function() {
