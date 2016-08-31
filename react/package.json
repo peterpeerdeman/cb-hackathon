@@ -43,6 +43,8 @@
     "eventemitter2": "^1.0.3",
     "powercheck": "^1.0.3",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "react-intl": "^2.1.4",
+    "superagent": "^2.2.0"
   }
 }
