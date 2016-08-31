@@ -74,17 +74,25 @@ var StripVideo = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <Kenteken />,
-  document.getElementById('react-kenteken')
-);
 
-ReactDOM.render(
-  <StripHero />,
-  document.getElementById('react-striphero')
-);
 
-ReactDOM.render(
-  <StripVideo />,
-  document.getElementById('react-stripvideo')
-);
+
+function reactBootstrap() {
+  var tags = document.getElementsByTagName('*');
+
+  for (var i = 0; i < tags.length; i++) {
+    switch (String.prototype.toLowerCase.apply(tags[i].tagName)) {
+      case 'react-kenteken':
+        ReactDOM.render(<Kenteken/>, tags[i]);
+        break;
+      case 'react-striphero':
+        ReactDOM.render(<StripHero/>, tags[i]);
+        break;
+      case 'react-stripvideo':
+        ReactDOM.render(<StripVideo/>, tags[i]);
+        break;
+    }
+  }
+}
+
+reactBootstrap();
