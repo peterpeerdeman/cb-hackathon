@@ -72,16 +72,74 @@ var KentekenFields = React.createClass({
 
 
 
+var HeroBanner = React.createClass({
+  render: function() {
+    return (
+      <div className="hero-banner">
+        <div className="banner" style={{backgroundImage: `url(${this.backgroundImageUrl})`}}></div>
+      </div>
+    )
+  },
+  backgroundImageUrl: 'https://cba.imgix.net/verzekeringen/overlijdensrisicoverzekering/PublishingImages/ORV_verzekering.jpg?'
+});
+
 
 var StripHero = React.createClass({
   render: function() {
     return (
-      <div className="cb-strip">
+      <article className="cb-strip cb-strip-hero-product">
+        <HeroBanner />
         Hello, world! I am a herostrip.
-      </div>
+      </article>
     );
   }
 });
+
+
+
+
+var StripHeroContent = React.createClass({
+  render: function() {
+    return (
+        <article className="cb-strip cb-strip-hero-product">
+          <div className="page container">
+            <div className="container-breadcrumb">
+              <div className="gradient"></div>
+              <ol className="breadcrumb">
+                <li><a href="">Dynamic</a></li>
+                <li><a href="">Load</a></li>
+                <li><span>Breadcrumb</span></li>
+              </ol>
+            </div>
+            <section className="content">
+              <h1>Product titel</h1>
+              <h2 className="highlight margin-bottom-lg">Tagline tekst</h2>
+            </section>
+          </div>
+        </article>
+    );
+  }
+});
+
+
+
+
+
+
+var StripContent = React.createClass({
+  render: function() {
+    return (
+        <div className="cb-strip">
+          Hello, world! I am a content strip.
+        </div>
+    );
+  }
+});
+
+
+
+
+
 
 var StripVideo = React.createClass({
   render: function() {
@@ -106,6 +164,12 @@ function reactBootstrap() {
         break;
       case 'react-striphero':
         ReactDOM.render(<StripHero/>, tags[i]);
+        break;
+      case 'react-stripherocontent':
+        ReactDOM.render(<StripHeroContent/>, tags[i]);
+        break;
+      case 'react-stripcontent':
+        ReactDOM.render(<StripContent/>, tags[i]);
         break;
       case 'react-stripvideo':
         ReactDOM.render(<StripVideo/>, tags[i]);
