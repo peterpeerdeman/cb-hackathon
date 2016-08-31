@@ -1,0 +1,11 @@
+{
+    "preset": "google",
+    "fileExtensions": [".js", ".jsx"],
+    "esnext": true,
+    "requireCurlyBraces": null,
+    "validateIndentation": 4,
+    "requireCamelCaseOrUpperCaseIdentifiers": null,
+    "maximumLineLength": null,
+    "requireSemicolons": true,
+    "excludeFiles": ["node_modules", "dist"]
+}
