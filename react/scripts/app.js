@@ -2,9 +2,7 @@ var Kenteken = React.createClass({
   getInitialState: function() {
     return {
       step: 1,
-      data: {
-        kenteken: ''
-      }
+      kenteken: null
     }
   },
 
@@ -14,20 +12,21 @@ var Kenteken = React.createClass({
         return <KentekenFields 
                     onCompleted={ this.nextStep } />;
       case 2:
-        return <span>Result state</span>;
+        return <span>Result state: { this.state.kenteken } </span>;
     }
   },
 
   nextStep: function(data) {
-    console.log(data);
-    console.log(this.state.step);
-    this.setState({step: this.state.step += 1});
-    console.log(this.state.step);
+    this.setState({
+      kenteken: data, 
+      step: this.state.step += 1
+    });
   }
 
 });
 
 var KentekenFields = React.createClass({
+
   render: function() {
     return (
       <div>
@@ -39,9 +38,29 @@ var KentekenFields = React.createClass({
 
   validateKenteken: function(e) {
     e.preventDefault();
-    var kenteken = this.refs.kenteken.value;
+    var kenteken = this.formatKenteken(this.refs.kenteken.value);
     this.props.onCompleted(kenteken);
+  },
+
+  formatKenteken: function(kenteken) {
+    kenteken = kenteken.replace(/ /g, '');
+    kenteken = kenteken.replace(/-/g, '');
+
+    var formattedKenteken = '';
+    var prevType = '';
+    for (var i = kenteken.length; i > 0; i--) {
+      var currentChar = kenteken[(i-1)];
+      var currentType = (parseInt(currentChar)) ? 'numeric' : 'string';
+      if (currentType != prevType && i != kenteken.length) {
+        formattedKenteken += '-';
+      }
+      formattedKenteken += currentChar;
+      prevType = currentType;
+    }
+    
+    return formattedKenteken;
   }
+
 });
 
 
